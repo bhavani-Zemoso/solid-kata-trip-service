@@ -6,6 +6,7 @@ import java.util.List;
 import org.craftedsw.tripservicekata.exception.UserNotLoggedInException;
 import org.craftedsw.tripservicekata.trip.Trip;
 import org.craftedsw.tripservicekata.trip.TripDAO;
+import org.craftedsw.tripservicekata.user.IUserSession;
 import org.craftedsw.tripservicekata.user.User;
 import org.craftedsw.tripservicekata.user.UserSession;
 
@@ -23,12 +24,12 @@ public class TripService_Original {
 				}
 			}
 			if (isFriend) {
-				tripList = TripDAO.findTripsByUser(user);
+				tripList = new TripDAO().findTripsByUser(user);
 			}
 			return tripList;
 		} else {
 			throw new UserNotLoggedInException();
 		}
 	}
-	
+
 }
